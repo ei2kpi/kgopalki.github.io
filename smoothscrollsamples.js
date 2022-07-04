@@ -80,6 +80,7 @@ function update_animation() {
 
     if (draw_consta) {
         let delta_y = curr_y - ca_y;
+        if (Math.abs(delta_y) > 1e-5) {console.log("1.)", curr_y, ca_y, ca_speed, ca_a, delta_y);}
         if (delta_t > 200) {
             ca_y = curr_y;
             ca_speed = 0;
@@ -99,13 +100,14 @@ function update_animation() {
                 } else {
                     ca_a = -ca_speed*ca_speed / 2 / delta_y;
                 }
-                console.log(curr_y, ca_y, ca_speed, ca_a, dist, delta_y);
+                console.log("2.)", curr_y, ca_y, ca_speed, ca_a, dist, delta_y);
                 ca_y += ca_speed * delta_t + 0.5 * ca_a * delta_t * delta_t;
                 if ((ca_y > curr_y) && (delta_y > 0)) {ca_y = curr_y};
                 if ((ca_y < curr_y) && (delta_y < 0)) {ca_y = curr_y};
                 ca_speed += ca_a * delta_t;
             }
         }
+        if (Math.abs(delta_y) > 1e-5) {console.log("3.)", ca_y, ca_speed, ca_a)};
         draw_frame(ca_y, "blue");
     }
 
