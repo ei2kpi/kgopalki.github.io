@@ -79,31 +79,43 @@ function update_animation() {
     }
 
     if (draw_consta) {
+        console.log('~~~');
         let delta_y = curr_y - ca_y;
         if (Math.abs(delta_y) > 1e-5) {console.log("1.)", curr_y, ca_y, ca_speed, ca_a, delta_y);}
         if (delta_t > 200) {
+            console.log('Slow computer or switched windows');
             ca_y = curr_y;
             ca_speed = 0;
             ca_a = 0;
         } else {
             if (Math.abs(delta_y) < 1e-5) {
+                // console.log('Practically there');
                 ca_y = curr_y;
                 ca_speed = 0;
                 ca_a = 0;
             } else {
+                is_deccelerating = false;
                 if ((delta_y > 0 && ca_speed < 0) || (delta_y < 0 && ca_speed>0)) {
                     ca_speed = 0;
+                    console.log('Wrong direction');
                 }
                 let dist = Math.abs(ca_speed * ca_speed / 2 / max_a); // S = v^2 / 2a
                 if (dist < Math.abs(delta_y)) {
                     ca_a = (delta_y > 0) ? max_a : (-max_a);
+                    console.log('accelerating');
                 } else {
                     ca_a = -ca_speed*ca_speed / 2 / delta_y;
+                    is_deccelerating = true;
+                    console.log('deccelerating');
                 }
                 console.log("2.)", curr_y, ca_y, ca_speed, ca_a, dist, delta_y);
+                prev_speed = ca_speed;
                 ca_y += ca_speed * delta_t + 0.5 * ca_a * delta_t * delta_t;
                 ca_speed += ca_a * delta_t;
-                if ((ca_y > curr_y) == (delta_y > 0)) {
+                if ((ca_y > curr_y) == (delta_y > 0) ||
+                    (is_deccelerating && ((prev_speed < 0) != (ca_speed < 0)) &&
+                        (Math.abs(prev_speed) > 1e-5) && (Math.abs(ca_speed) > 1e-5))) {
+                    console.log('full stop');
                     ca_y = curr_y;
                     ca_speed = 0;
                 };
