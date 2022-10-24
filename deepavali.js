@@ -40,7 +40,7 @@ function drawName() {
     ctx.restore();
 
     ctx.save();
-    fs2 = fs*0.8
+    fs2 = fs;
     ctx.font = fs2 + "px Dancing Script";
     ctx.fillStyle = "gold";
     ctx.textAlign = "right";
