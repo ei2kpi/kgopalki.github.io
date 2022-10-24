@@ -32,7 +32,7 @@ function drawName() {
     ctx.font = fs + "px Grandstander";
     ctx.fillStyle = "goldenrod";
     // console.log("r:", recipient);
-    message = "Thank you so much, " + recipient + "! and Happy Deepavali to all of you too!";
+    message = "Thank you so much, " + recipient + "! \n and Happy Deepavali to all of you too!";
     lines = message.split("\n");
     for (var i=0; i<lines.length; i++) {
         ctx.fillText(lines[i], canvas.width*0.05, canvas.height*0.1 + fs*1.2*i);
