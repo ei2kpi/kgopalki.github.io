@@ -1,4 +1,4 @@
-// If you want to use this code,
+ // If you want to use this code,
 // please credit gopal@claylabs.com
 // and include this message with any modified form
 
@@ -40,7 +40,7 @@ function drawName() {
     ctx.restore();
 
     ctx.save();
-    fs2 = fs;
+    fs2 = fs * 1.2;
     ctx.font = fs2 + "px Dancing Script";
     ctx.fillStyle = "gold";
     ctx.textAlign = "right";
