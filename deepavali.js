@@ -32,7 +32,7 @@ function drawName() {
     ctx.font = fs + "px Grandstander";
     ctx.fillStyle = "goldenrod";
     // console.log("r:", recipient);
-    message = "Happy Deepavali, " + recipient + "!";
+    message = "Thank you so much, " + recipient + "! and Happy Deepavali to all of you too!";
     lines = message.split("\n");
     for (var i=0; i<lines.length; i++) {
         ctx.fillText(lines[i], canvas.width*0.05, canvas.height*0.1 + fs*1.2*i);
@@ -44,10 +44,7 @@ function drawName() {
     ctx.font = fs2 + "px Dancing Script";
     ctx.fillStyle = "gold";
     ctx.textAlign = "right";
-    message = "From:\nMythili,\nMeenu,\nUma,\n"
-                + ((op2=="n")?"and ":"")
-                + ((op1=="g")?"Gopal":"Rahul")
-                + ((op2!="n") ? ",\nand " + ((op2=="p")?"Papa.":"Shyamala.") : ".");
+    message = "From:\nRamitha and Varun";
     lines = message.split("\n");
     for (var i=lines.length-1; i>=0; i--) {
         ctx.fillText(lines[i], canvas.width*0.95, canvas.height*0.9 + fs2*1.2*(i-lines.length+1));
